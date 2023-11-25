@@ -1,0 +1,24 @@
+excluded: # SwiftLint 검사에서 제외할 파일 경로
+  - Pods
+  - swiftui-socialTests
+  - swiftui-socialUITests/
+
+line_length:
+ warning: 150
+ error: 200
+ ignores_comments: true
+
+identifier_name:
+ validates_start_with_lowercase: false
+ allowed_symbols: [_]
+ min_length: 1
+ max_length:
+  warning: 90
+  error: 100
+
+custom_rules:
+ comments_space: # From https://github.com/brandenr/swiftlintconfig
+  name: "Space After Comment"
+  regex: '(^ *//\w+)'
+  message: "There should be a space after //"
+  severity: warning
