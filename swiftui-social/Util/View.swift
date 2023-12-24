@@ -17,7 +17,7 @@ extension View {
 
     func inject(_ container: DIContainer) -> some View {
         return self
-            .modifier(RootViewAppearance())
+            //            .modifier(RootViewAppearance())
             .environment(\.injected, container)
     }
 }

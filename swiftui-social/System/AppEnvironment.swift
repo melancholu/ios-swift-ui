@@ -13,14 +13,26 @@ extension AppEnvironment {
 
     static func bootstrap() -> AppEnvironment {
         let appState = Store<AppState>(AppState())
-        let interactors = configuredInteractors(appState: appState)
+        let authRepository = configuredAuthRepository()
+        let userRepository = configuredUserRepository()
+        let interactors = configuredInteractors(appState: appState, authRepository: authRepository, userRepository: userRepository)
         let diContainer = DIContainer(appState: appState, interactors: interactors)
 
         return AppEnvironment(container: diContainer)
     }
 
-    private static func configuredInteractors(appState: Store<AppState>) -> DIContainer.Interactors {
+    private static func configuredAuthRepository() -> AuthRepository {
+        return AuthRepository()
+    }
 
-        return .init()
+    private static func configuredUserRepository() -> UserRepository {
+        return UserRepository()
+    }
+
+    private static func configuredInteractors(appState: Store<AppState>, authRepository: AuthRepository, userRepository: UserRepository) -> DIContainer.Interactors {
+        let authInteractor = DefaultAuthInteractor(authRepository: authRepository)
+        let userInteractor = DefaultUserInteractor(userRepository: userRepository)
+
+        return .init(authInteractor: authInteractor, userInteractor: userInteractor)
     }
 }

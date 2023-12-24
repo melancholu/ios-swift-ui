@@ -13,6 +13,19 @@
 		AC4B58E72B08BF920043D8FB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E62B08BF920043D8FB /* Store.swift */; };
 		AC4B58EC2B08D3A60043D8FB /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58EB2B08D3A60043D8FB /* RootViewModifier.swift */; };
 		AC4B58EE2B08D78F0043D8FB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58ED2B08D78F0043D8FB /* Helper.swift */; };
+		ACA032B72B1B4F4700EDC73C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032B62B1B4F4700EDC73C /* User.swift */; };
+		ACA032BC2B1B517200EDC73C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032BB2B1B517200EDC73C /* AuthAPI.swift */; };
+		ACA032BF2B1B51C800EDC73C /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032BE2B1B51C800EDC73C /* BaseAPI.swift */; };
+		ACA032C12B1B51F800EDC73C /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032C02B1B51F800EDC73C /* Env.swift */; };
+		ACA032C82B1B542E00EDC73C /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = ACA032C72B1B542E00EDC73C /* CombineMoya */; };
+		ACA032CA2B1B543000EDC73C /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ACA032C92B1B543000EDC73C /* Moya */; };
+		ACA032CC2B1B551400EDC73C /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032CB2B1B551400EDC73C /* BaseRepository.swift */; };
+		ACA032CE2B1B555900EDC73C /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032CD2B1B555900EDC73C /* NetworkInterceptor.swift */; };
+		ACA032D02B1B557400EDC73C /* NetworkPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032CF2B1B557400EDC73C /* NetworkPlugin.swift */; };
+		ACA032D32B1B55D500EDC73C /* CoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D22B1B55D500EDC73C /* CoreStorage.swift */; };
+		ACA032D52B1B561B00EDC73C /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D42B1B561B00EDC73C /* AuthRepository.swift */; };
+		ACA032D72B1B563C00EDC73C /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D62B1B563C00EDC73C /* Token.swift */; };
+		ACA032D92B1B568200EDC73C /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D82B1B568200EDC73C /* AuthInteractor.swift */; };
 		ACA73CDE2B11FD1B00004F3C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA73CDD2B11FD1B00004F3C /* View.swift */; };
 		ACA73CE12B120DE200004F3C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA73CE02B120DE200004F3C /* AppEnvironment.swift */; };
 		ACA9850F2AD18AA000F16A7B /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9850E2AD18AA000F16A7B /* MainApp.swift */; };
@@ -28,6 +41,10 @@
 		ACA985492AD1930F00F16A7B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA985482AD1930F00F16A7B /* Color.swift */; };
 		ACCC6B692AD24FE80053A350 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC6B682AD24FE80053A350 /* BackButton.swift */; };
 		ACCC6B6B2AD250080053A350 /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC6B6A2AD250080053A350 /* BackButtonModifier.swift */; };
+		ACEFE2972B2DC1B7008250CA /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE2962B2DC1B7008250CA /* UserRepository.swift */; };
+		ACEFE2992B2DC1EF008250CA /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE2982B2DC1EF008250CA /* UserAPI.swift */; };
+		ACEFE29B2B2DC227008250CA /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE29A2B2DC227008250CA /* Pagination.swift */; };
+		ACEFE29D2B2DC24E008250CA /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE29C2B2DC24E008250CA /* UserInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +71,20 @@
 		AC4B58E62B08BF920043D8FB /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AC4B58EB2B08D3A60043D8FB /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		AC4B58ED2B08D78F0043D8FB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		ACA032B62B1B4F4700EDC73C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ACA032BB2B1B517200EDC73C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		ACA032BE2B1B51C800EDC73C /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		ACA032C02B1B51F800EDC73C /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		ACA032C32B1B524A00EDC73C /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		ACA032C42B1B526100EDC73C /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
+		ACA032C52B1B527B00EDC73C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACA032CB2B1B551400EDC73C /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		ACA032CD2B1B555900EDC73C /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
+		ACA032CF2B1B557400EDC73C /* NetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPlugin.swift; sourceTree = "<group>"; };
+		ACA032D22B1B55D500EDC73C /* CoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorage.swift; sourceTree = "<group>"; };
+		ACA032D42B1B561B00EDC73C /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		ACA032D62B1B563C00EDC73C /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		ACA032D82B1B568200EDC73C /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		ACA73CDD2B11FD1B00004F3C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		ACA73CE02B120DE200004F3C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		ACA9850B2AD18AA000F16A7B /* swiftui-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +103,10 @@
 		ACA985482AD1930F00F16A7B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		ACCC6B682AD24FE80053A350 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		ACCC6B6A2AD250080053A350 /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
+		ACEFE2962B2DC1B7008250CA /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		ACEFE2982B2DC1EF008250CA /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		ACEFE29A2B2DC227008250CA /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		ACEFE29C2B2DC24E008250CA /* UserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA032CA2B1B543000EDC73C /* Moya in Frameworks */,
+				ACA032C82B1B542E00EDC73C /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +172,70 @@
 			path = Screen;
 			sourceTree = "<group>";
 		};
+		ACA032B52B1B4F1D00EDC73C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032B62B1B4F4700EDC73C /* User.swift */,
+				ACA032D62B1B563C00EDC73C /* Token.swift */,
+				ACEFE29A2B2DC227008250CA /* Pagination.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACA032B82B1B50C300EDC73C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032D82B1B568200EDC73C /* AuthInteractor.swift */,
+				ACEFE29C2B2DC24E008250CA /* UserInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		ACA032B92B1B513200EDC73C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032BA2B1B516000EDC73C /* API */,
+				ACA032CB2B1B551400EDC73C /* BaseRepository.swift */,
+				ACA032D42B1B561B00EDC73C /* AuthRepository.swift */,
+				ACEFE2962B2DC1B7008250CA /* UserRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		ACA032BA2B1B516000EDC73C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032BB2B1B517200EDC73C /* AuthAPI.swift */,
+				ACA032BE2B1B51C800EDC73C /* BaseAPI.swift */,
+				ACEFE2982B2DC1EF008250CA /* UserAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ACA032C22B1B520A00EDC73C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032C32B1B524A00EDC73C /* debug.xcconfig */,
+				ACA032C42B1B526100EDC73C /* Prod.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		ACA032C62B1B542E00EDC73C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACA032D12B1B55C200EDC73C /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				ACA032D22B1B55D500EDC73C /* CoreStorage.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		ACA73CDF2B120DD200004F3C /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +252,7 @@
 				ACA9851E2AD18AA300F16A7B /* swiftui-socialTests */,
 				ACA985282AD18AA300F16A7B /* swiftui-socialUITests */,
 				ACA9850C2AD18AA000F16A7B /* Products */,
+				ACA032C62B1B542E00EDC73C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,11 +269,16 @@
 		ACA9850D2AD18AA000F16A7B /* swiftui-social */ = {
 			isa = PBXGroup;
 			children = (
-				ACA73CDF2B120DD200004F3C /* System */,
+				ACA032D12B1B55C200EDC73C /* Persistence */,
+				ACA032C22B1B520A00EDC73C /* Config */,
 				AC4B58DF2B0899500043D8FB /* Injected */,
+				ACA032B82B1B50C300EDC73C /* Interactor */,
+				ACA032B52B1B4F1D00EDC73C /* Model */,
+				ACA032B92B1B513200EDC73C /* Repository */,
+				ACA985382AD18AB400F16A7B /* Resource */,
+				ACA73CDF2B120DD200004F3C /* System */,
 				ACA985392AD18B0900F16A7B /* UI */,
 				ACA985472AD192FD00F16A7B /* Util */,
-				ACA985382AD18AB400F16A7B /* Resource */,
 			);
 			path = "swiftui-social";
 			sourceTree = "<group>";
@@ -196,6 +303,7 @@
 		ACA985382AD18AB400F16A7B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				ACA032C52B1B527B00EDC73C /* Info.plist */,
 				ACA985122AD18AA200F16A7B /* Assets.xcassets */,
 				ACA985152AD18AA200F16A7B /* Preview Assets.xcassets */,
 				ACA985442AD192D000F16A7B /* Colors.xcassets */,
@@ -226,8 +334,11 @@
 			isa = PBXGroup;
 			children = (
 				ACA985482AD1930F00F16A7B /* Color.swift */,
-				AC4B58E62B08BF920043D8FB /* Store.swift */,
+				ACA032C02B1B51F800EDC73C /* Env.swift */,
 				AC4B58ED2B08D78F0043D8FB /* Helper.swift */,
+				ACA032CD2B1B555900EDC73C /* NetworkInterceptor.swift */,
+				ACA032CF2B1B557400EDC73C /* NetworkPlugin.swift */,
+				AC4B58E62B08BF920043D8FB /* Store.swift */,
 				ACA73CDD2B11FD1B00004F3C /* View.swift */,
 			);
 			path = Util;
@@ -250,6 +361,10 @@
 			dependencies = (
 			);
 			name = "swiftui-social";
+			packageProductDependencies = (
+				ACA032C72B1B542E00EDC73C /* CombineMoya */,
+				ACA032C92B1B543000EDC73C /* Moya */,
+			);
 			productName = "swiftui-social";
 			productReference = ACA9850B2AD18AA000F16A7B /* swiftui-social.app */;
 			productType = "com.apple.product-type.application";
@@ -322,6 +437,9 @@
 				Base,
 			);
 			mainGroup = ACA985022AD18AA000F16A7B;
+			packageReferences = (
+				ACA032BD2B1B51AA00EDC73C /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = ACA9850C2AD18AA000F16A7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,19 +504,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA985412AD1927700F16A7B /* PrimaryButtonStyle.swift in Sources */,
+				ACEFE29D2B2DC24E008250CA /* UserInteractor.swift in Sources */,
+				ACEFE29B2B2DC227008250CA /* Pagination.swift in Sources */,
+				ACA032D72B1B563C00EDC73C /* Token.swift in Sources */,
 				ACA985112AD18AA000F16A7B /* LoginView.swift in Sources */,
 				ACCC6B692AD24FE80053A350 /* BackButton.swift in Sources */,
+				ACA032D02B1B557400EDC73C /* NetworkPlugin.swift in Sources */,
+				ACA032BF2B1B51C800EDC73C /* BaseAPI.swift in Sources */,
 				AC4B58E32B08B82E0043D8FB /* InteractorsContainer.swift in Sources */,
+				ACA032CE2B1B555900EDC73C /* NetworkInterceptor.swift in Sources */,
+				ACA032BC2B1B517200EDC73C /* AuthAPI.swift in Sources */,
+				ACA032B72B1B4F4700EDC73C /* User.swift in Sources */,
+				ACA032D52B1B561B00EDC73C /* AuthRepository.swift in Sources */,
+				ACEFE2972B2DC1B7008250CA /* UserRepository.swift in Sources */,
 				AC4B58E12B0899770043D8FB /* AppState.swift in Sources */,
+				ACEFE2992B2DC1EF008250CA /* UserAPI.swift in Sources */,
 				ACA73CE12B120DE200004F3C /* AppEnvironment.swift in Sources */,
 				ACCC6B6B2AD250080053A350 /* BackButtonModifier.swift in Sources */,
 				AC4B58E72B08BF920043D8FB /* Store.swift in Sources */,
 				AC4B58E52B08BBAE0043D8FB /* DependencyInjector.swift in Sources */,
+				ACA032C12B1B51F800EDC73C /* Env.swift in Sources */,
+				ACA032D32B1B55D500EDC73C /* CoreStorage.swift in Sources */,
+				ACA032D92B1B568200EDC73C /* AuthInteractor.swift in Sources */,
 				ACA9853E2AD18EBF00F16A7B /* SignUpView.swift in Sources */,
 				ACA985492AD1930F00F16A7B /* Color.swift in Sources */,
 				AC4B58EE2B08D78F0043D8FB /* Helper.swift in Sources */,
 				ACA9850F2AD18AA000F16A7B /* MainApp.swift in Sources */,
 				ACA73CDE2B11FD1B00004F3C /* View.swift in Sources */,
+				ACA032CC2B1B551400EDC73C /* BaseRepository.swift in Sources */,
 				AC4B58EC2B08D3A60043D8FB /* RootViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,11 +700,14 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swiftui-social/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -597,11 +733,14 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swiftui-social/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -731,6 +870,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ACA032BD2B1B51AA00EDC73C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACA032C72B1B542E00EDC73C /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA032BD2B1B51AA00EDC73C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		ACA032C92B1B543000EDC73C /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACA032BD2B1B51AA00EDC73C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ACA985032AD18AA000F16A7B /* Project object */;
 }

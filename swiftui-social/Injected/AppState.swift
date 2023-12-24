@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 
-struct AppState: Equatable {
+struct AppState {
     var system = System()
+    var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
 }
 
 extension AppState {
     struct System: Equatable {
         var isActive: Bool = false
-        var keyboardHeight: CGFloat = 0
     }
 }
 

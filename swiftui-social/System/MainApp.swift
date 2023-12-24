@@ -13,7 +13,11 @@ struct MainApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView().inject(appEnvironment.container)
+            if appEnvironment.container.appState.value.isLoggedIn {
+                LoginView().inject(appEnvironment.container)
+            } else {
+                LoginView().inject(appEnvironment.container)
+            }
         }
     }
 }
