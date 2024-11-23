@@ -22,6 +22,7 @@ final class AuthRepository: BaseRepository<AuthAPI>, AuthRepositoryProtocol {
         return provider.requestPublisher(.login(user: user)).tryMap { response in
             let decodedData = try response.map(Token.self)
 
+            print(decodedData)
             return decodedData
         }
         .mapError { error in

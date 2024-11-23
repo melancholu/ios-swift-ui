@@ -8,23 +8,26 @@
 import SwiftUI
 import Combine
 
-struct AppState {
-    var system = System()
-    var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
-}
+class AppState: ObservableObject, Equatable {
+    static var shared = AppState()
 
-extension AppState {
-    struct System: Equatable {
-        var isActive: Bool = false
+    @Published var feedData = FeedData()
+//    var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
+    var isLoggedIn: Bool = true
+
+    static func == (lhs: AppState, rhs: AppState) -> Bool {
+        return lhs.feedData == rhs.feedData
     }
 }
 
-#if DEBUG
 extension AppState {
-    static var preview: AppState {
-        var state = AppState()
-        state.system.isActive = true
-        return state
+    class FeedData: ObservableObject, Equatable {
+        @Published var feeds: [Feed] = [Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub]
+        @Published var nextPage: Int = 0
+        @State var isLoading: Loading = .idle
+
+        static func == (lhs: FeedData, rhs: FeedData) -> Bool {
+            return lhs.feeds == rhs.feeds && lhs.nextPage == rhs.nextPage
+        }
     }
 }
-#endif

@@ -18,11 +18,6 @@ struct RootViewAppearance: ViewModifier {
         content
             .blur(radius: isActive ? 0 : 10)
             .ignoresSafeArea()
-            .onReceive(stateUpdate) { self.isActive = $0 }
             .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
-    }
-
-    private var stateUpdate: AnyPublisher<Bool, Never> {
-        injected.appState.updates(for: \.system.isActive)
     }
 }

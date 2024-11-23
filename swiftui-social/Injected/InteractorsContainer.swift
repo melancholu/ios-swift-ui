@@ -8,10 +8,11 @@
 extension DIContainer {
     struct Interactors {
         let authInteractor: AuthInteractor
+        let feedInteractor: FeedInteractor
         let userInteractor: UserInteractor
 
         static var stub: Self {
-            .init(authInteractor: StubAuthInteractor(), userInteractor: StubUserInteractor())
+            .init(authInteractor: StubAuthInteractor(), feedInteractor: StubFeedInteractor(), userInteractor: StubUserInteractor())
         }
     }
 }
