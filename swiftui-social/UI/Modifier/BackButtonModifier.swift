@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BackButtonModifier: ViewModifier {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var router: Router
 
     func body(content: Content) -> some View {
         content
@@ -16,7 +16,7 @@ struct BackButtonModifier: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     BackButton {
-                        presentationMode.wrappedValue.dismiss()
+                        router.pop()
                     }
                 }
             }

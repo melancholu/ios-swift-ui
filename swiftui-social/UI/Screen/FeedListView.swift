@@ -11,26 +11,26 @@ import Combine
 struct FeedListView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.injected) private var injected: DIContainer
+    @EnvironmentObject var router: Router
 
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
-                List(appState.feedData.feeds) { feed in
-                  FamilyRow(feed: feed)
-                    .onAppear {
-                        loadMore()
-                    }
+        ZStack(alignment: .bottomTrailing) {
+            List(appState.feedData.feeds) { feed in
+              FamilyRow(feed: feed)
+                .onAppear {
+                    loadMore()
                 }
-                Button {
-                } label: {
-                    Image(systemName: "plus")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
-                .padding(16)
             }
+            Button {
+                router.push(to: .createFeed)
+            } label: {
+                Image(systemName: "plus")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Circle())
+            }
+            .padding(16)
         }
     }
 }

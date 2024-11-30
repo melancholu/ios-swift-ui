@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0F7C612CFADD620002BC3D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F7C602CFADD620002BC3D /* UINavigationController.swift */; };
 		AC4B58E12B0899770043D8FB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E02B0899770043D8FB /* AppState.swift */; };
 		AC4B58E32B08B82E0043D8FB /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E22B08B82E0043D8FB /* InteractorsContainer.swift */; };
 		AC4B58E52B08BBAE0043D8FB /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E42B08BBAE0043D8FB /* DependencyInjector.swift */; };
@@ -49,6 +50,7 @@
 		ACBE3F8B2B65347D00A71539 /* CreateFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE3F8A2B65347D00A71539 /* CreateFeedView.swift */; };
 		ACCC6B692AD24FE80053A350 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC6B682AD24FE80053A350 /* BackButton.swift */; };
 		ACCC6B6B2AD250080053A350 /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC6B6A2AD250080053A350 /* BackButtonModifier.swift */; };
+		ACE1467C2CF1F978008DABC5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE1467B2CF1F978008DABC5 /* Router.swift */; };
 		ACEFE2972B2DC1B7008250CA /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE2962B2DC1B7008250CA /* UserRepository.swift */; };
 		ACEFE2992B2DC1EF008250CA /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE2982B2DC1EF008250CA /* UserAPI.swift */; };
 		ACEFE29B2B2DC227008250CA /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE29A2B2DC227008250CA /* Pagination.swift */; };
@@ -73,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC0F7C602CFADD620002BC3D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		AC4B58E02B0899770043D8FB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AC4B58E22B08B82E0043D8FB /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
 		AC4B58E42B08BBAE0043D8FB /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 		ACBE3F8A2B65347D00A71539 /* CreateFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFeedView.swift; sourceTree = "<group>"; };
 		ACCC6B682AD24FE80053A350 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		ACCC6B6A2AD250080053A350 /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
+		ACE1467B2CF1F978008DABC5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		ACEFE2962B2DC1B7008250CA /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		ACEFE2982B2DC1EF008250CA /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		ACEFE29A2B2DC227008250CA /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
@@ -364,6 +368,8 @@
 				ACA032CD2B1B555900EDC73C /* NetworkInterceptor.swift */,
 				ACA032CF2B1B557400EDC73C /* NetworkPlugin.swift */,
 				ACA73CDD2B11FD1B00004F3C /* View.swift */,
+				ACE1467B2CF1F978008DABC5 /* Router.swift */,
+				AC0F7C602CFADD620002BC3D /* UINavigationController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC99D7B72B52BEA500347910 /* FeedAPI.swift in Sources */,
+				AC0F7C612CFADD620002BC3D /* UINavigationController.swift in Sources */,
 				ACA985412AD1927700F16A7B /* PrimaryButtonStyle.swift in Sources */,
 				ACBE3F892B652EFB00A71539 /* Loading.swift in Sources */,
 				ACEFE29D2B2DC24E008250CA /* UserInteractor.swift in Sources */,
@@ -565,6 +572,7 @@
 				ACA032D92B1B568200EDC73C /* AuthInteractor.swift in Sources */,
 				AC99D7B52B52BE4700347910 /* FeedRepository.swift in Sources */,
 				ACA9853E2AD18EBF00F16A7B /* SignUpView.swift in Sources */,
+				ACE1467C2CF1F978008DABC5 /* Router.swift in Sources */,
 				ACA985492AD1930F00F16A7B /* Color.swift in Sources */,
 				AC4B58EE2B08D78F0043D8FB /* Helper.swift in Sources */,
 				ACA9850F2AD18AA000F16A7B /* MainApp.swift in Sources */,

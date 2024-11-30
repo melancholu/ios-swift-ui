@@ -10,11 +10,11 @@ import Combine
 
 struct SignUpView: View {
     @Environment(\.injected) private var injected: DIContainer
-    @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var router: Router
 
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var name: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
 
     var body: some View {
         VStack(spacing: 8) {
@@ -61,8 +61,8 @@ private extension SignUpView {
         injected.interactors.userInteractor.signUp(user: user).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
-                self.presentation.wrappedValue.dismiss()
-            case .failure(let error):
+                self.router.pop()
+            case .failure:
                 break
             }
         }, receiveValue: { _ in

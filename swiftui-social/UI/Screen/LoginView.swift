@@ -10,31 +10,32 @@ import Combine
 
 struct LoginView: View {
     @Environment(\.injected) private var injected: DIContainer
+    @EnvironmentObject var router: Router
 
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 8) {
-                TextField("Email", text: $email)
-                    .frame(height: 36)
-                    .textFieldStyle(.roundedBorder)
-                SecureField("Password", text: $password)
-                    .frame(height: 36)
-                    .textFieldStyle(.roundedBorder)
-                HStack {
-                    NavigationLink("SignUp", destination: SignUpView())
-                    Spacer()
-                    Button("Log in") {
-                        login()
-                    }
-                }.padding([.leading, .trailing], 8)
+        VStack(spacing: 8) {
+            TextField("Email", text: $email)
+                .frame(height: 36)
+                .textFieldStyle(.roundedBorder)
+            SecureField("Password", text: $password)
+                .frame(height: 36)
+                .textFieldStyle(.roundedBorder)
+            HStack {
+                Button("SignUp") {
+                    router.push(to: .signUp)
+                }
                 Spacer()
-            }
-            .padding(.top, 160)
-            .padding([.leading, .trailing], 16)
+                Button("Log in") {
+                    login()
+                }
+            }.padding([.leading, .trailing], 8)
+            Spacer()
         }
+        .padding(.top, 160)
+        .padding([.leading, .trailing], 16)
     }
 }
 
