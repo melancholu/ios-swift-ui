@@ -5,30 +5,46 @@
 //  Created by song dong hyeok on 2023/12/02.
 //
 
-import Foundation
 import Combine
+import Foundation
+import SwiftUI
 
 protocol AuthInteractor {
-    func login(email: String, password: String) -> AnyPublisher<Token, Error>
-    func logout() -> AnyPublisher<Void, Error>
+    func login(email: String, password: String, result: Binding<ApiResult>)
+    func logout()
     func refresh() -> AnyPublisher<Void, Error>
 }
 
-struct DefaultAuthInteractor: AuthInteractor {
-    private let authRepository: AuthRepository
+final class DefaultAuthInteractor: AuthInteractor {
+    private let authRepository: AuthRepositoryProtocol
+    private var subscriptions: Set<AnyCancellable>
 
-    init(authRepository: AuthRepository) {
+    init(authRepository: AuthRepositoryProtocol) {
         self.authRepository = authRepository
+        self.subscriptions = Set<AnyCancellable>()
     }
 
-    func login(email: String, password: String) -> AnyPublisher<Token, Error> {
+    func login(email: String, password: String, result: Binding<ApiResult>) {
         let user = User(name: nil, email: email, password: password)
 
-        return authRepository.login(user: user)
+        authRepository.login(user: user).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                result.wrappedValue = .success
+            case .failure:
+                result.wrappedValue = .failed(StringError(message: "Please check email or password"))
+            }
+        }, receiveValue: { token in
+            CoreStorage.shared.setToken(token)
+        }).store(in: &subscriptions)
     }
 
-    func logout() -> AnyPublisher<Void, Error> {
-        return authRepository.logout()
+    func logout() {
+        authRepository.logout().sink(receiveCompletion: { _ in
+        }, receiveValue: { _ in
+            CoreStorage.shared.setToken(nil)
+            CoreStorage.shared.setUser(nil)
+        }).store(in: &subscriptions)
     }
 
     func refresh() -> AnyPublisher<Void, Error> {
@@ -36,16 +52,12 @@ struct DefaultAuthInteractor: AuthInteractor {
     }
 }
 
-struct StubAuthInteractor: AuthInteractor {
-    func login(email: String, password: String) -> AnyPublisher<Token, Error> {
-        Just(Token.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
-    }
+final class StubAuthInteractor: AuthInteractor {
+    func login(email: String, password: String, result: Binding<ApiResult>) {}
 
-    func logout() -> AnyPublisher<Void, Error> {
-        Just(()).setFailureType(to: Error.self).eraseToAnyPublisher()
-    }
+    func logout() {}
 
     func refresh() -> AnyPublisher<Void, Error> {
-        Just(()).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(()).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 }

@@ -5,13 +5,19 @@
 //  Created by song dong hyeok on 2023/11/25.
 //
 
-struct AppEnvironment {
-    let appState: AppState
+import Combine
+
+class AppEnvironment: ObservableObject {
+    @Published var appState: AppState
     let container: DIContainer
+
+    init(appState: AppState, container: DIContainer) {
+        self.appState = appState
+        self.container = container
+    }
 }
 
 extension AppEnvironment {
-
     static func bootstrap() -> AppEnvironment {
         let appState = AppState.shared
         let authRepository = configuredAuthRepository()
@@ -24,7 +30,7 @@ extension AppEnvironment {
     }
 
     private static func configuredAuthRepository() -> AuthRepository {
-        return AuthRepository()
+        return AuthRepository(.prod)
     }
 
     private static func configuredFeedRepository() -> FeedRepository {

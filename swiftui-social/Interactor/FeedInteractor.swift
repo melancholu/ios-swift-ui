@@ -5,21 +5,22 @@
 //  Created by song dong hyeok on 2024/01/13.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol FeedInteractor {
     func getFeeds()
 }
 
-struct DefaultFeedInteractor: FeedInteractor {
+final class DefaultFeedInteractor: FeedInteractor {
     private let appState: AppState
-    private let feedRepository: FeedRepository
-    private var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
+    private let feedRepository: FeedRepositoryProtocol
+    private var subscriptions: Set<AnyCancellable>
 
-    init(appState: AppState, feedRepository: FeedRepository) {
+    init(appState: AppState, feedRepository: FeedRepositoryProtocol) {
         self.appState = appState
         self.feedRepository = feedRepository
+        self.subscriptions = Set<AnyCancellable>()
     }
 
     func getFeeds() {
@@ -31,20 +32,20 @@ struct DefaultFeedInteractor: FeedInteractor {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
-                    appState.feedData.isLoading = .completed
-                case .failure(let error):
-                    appState.feedData.isLoading = .error
+                    self.appState.feedData.isLoading = .completed
+                case .failure:
+                    self.appState.feedData.isLoading = .error
                 }
             }, receiveValue: { response in
                 let data = response.data
                 let meta = response.meta
 
-                appState.feedData.feeds.append(contentsOf: data)
-                appState.feedData.nextPage = data.count == 0 ? -1 : meta.nextPage
+                self.appState.feedData.feeds.append(contentsOf: data)
+                self.appState.feedData.nextPage = data.count == 0 ? -1 : meta.nextPage
             }).store(in: &subscriptions)
     }
 }
 
-struct StubFeedInteractor: FeedInteractor {
+final class StubFeedInteractor: FeedInteractor {
     func getFeeds() {}
 }

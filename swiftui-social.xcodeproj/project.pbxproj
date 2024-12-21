@@ -11,7 +11,6 @@
 		AC4B58E12B0899770043D8FB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E02B0899770043D8FB /* AppState.swift */; };
 		AC4B58E32B08B82E0043D8FB /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E22B08B82E0043D8FB /* InteractorsContainer.swift */; };
 		AC4B58E52B08BBAE0043D8FB /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58E42B08BBAE0043D8FB /* DependencyInjector.swift */; };
-		AC4B58EC2B08D3A60043D8FB /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58EB2B08D3A60043D8FB /* RootViewModifier.swift */; };
 		AC4B58EE2B08D78F0043D8FB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B58ED2B08D78F0043D8FB /* Helper.swift */; };
 		AC653D262B41618C0013FCF1 /* FeedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC653D252B41618C0013FCF1 /* FeedListView.swift */; };
 		AC653D282B41648A0013FCF1 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC653D272B41648A0013FCF1 /* MainTabView.swift */; };
@@ -33,12 +32,10 @@
 		ACA032D52B1B561B00EDC73C /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D42B1B561B00EDC73C /* AuthRepository.swift */; };
 		ACA032D72B1B563C00EDC73C /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D62B1B563C00EDC73C /* Token.swift */; };
 		ACA032D92B1B568200EDC73C /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA032D82B1B568200EDC73C /* AuthInteractor.swift */; };
-		ACA73CDE2B11FD1B00004F3C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA73CDD2B11FD1B00004F3C /* View.swift */; };
 		ACA73CE12B120DE200004F3C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA73CE02B120DE200004F3C /* AppEnvironment.swift */; };
 		ACA9850F2AD18AA000F16A7B /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9850E2AD18AA000F16A7B /* MainApp.swift */; };
 		ACA985112AD18AA000F16A7B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA985102AD18AA000F16A7B /* LoginView.swift */; };
 		ACA985132AD18AA200F16A7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA985122AD18AA200F16A7B /* Assets.xcassets */; };
-		ACA985162AD18AA200F16A7B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA985152AD18AA200F16A7B /* Preview Assets.xcassets */; };
 		ACA985202AD18AA300F16A7B /* swiftui_socialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9851F2AD18AA300F16A7B /* swiftui_socialTests.swift */; };
 		ACA9852A2AD18AA300F16A7B /* swiftui_socialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA985292AD18AA300F16A7B /* swiftui_socialUITests.swift */; };
 		ACA9852C2AD18AA300F16A7B /* swiftui_socialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9852B2AD18AA300F16A7B /* swiftui_socialUITestsLaunchTests.swift */; };
@@ -55,6 +52,7 @@
 		ACEFE2992B2DC1EF008250CA /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE2982B2DC1EF008250CA /* UserAPI.swift */; };
 		ACEFE29B2B2DC227008250CA /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE29A2B2DC227008250CA /* Pagination.swift */; };
 		ACEFE29D2B2DC24E008250CA /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFE29C2B2DC24E008250CA /* UserInteractor.swift */; };
+		ACF927392D08076400113C5D /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF927382D08076400113C5D /* Loadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +77,6 @@
 		AC4B58E02B0899770043D8FB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AC4B58E22B08B82E0043D8FB /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
 		AC4B58E42B08BBAE0043D8FB /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
-		AC4B58EB2B08D3A60043D8FB /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		AC4B58ED2B08D78F0043D8FB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		AC653D252B41618C0013FCF1 /* FeedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListView.swift; sourceTree = "<group>"; };
 		AC653D272B41648A0013FCF1 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -102,13 +99,11 @@
 		ACA032D42B1B561B00EDC73C /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		ACA032D62B1B563C00EDC73C /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		ACA032D82B1B568200EDC73C /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
-		ACA73CDD2B11FD1B00004F3C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		ACA73CE02B120DE200004F3C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		ACA9850B2AD18AA000F16A7B /* swiftui-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA9850E2AD18AA000F16A7B /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		ACA985102AD18AA000F16A7B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		ACA985122AD18AA200F16A7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ACA985152AD18AA200F16A7B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ACA9851B2AD18AA300F16A7B /* swiftui-socialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swiftui-socialTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA9851F2AD18AA300F16A7B /* swiftui_socialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_socialTests.swift; sourceTree = "<group>"; };
 		ACA985252AD18AA300F16A7B /* swiftui-socialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swiftui-socialUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +122,7 @@
 		ACEFE2982B2DC1EF008250CA /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		ACEFE29A2B2DC227008250CA /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		ACEFE29C2B2DC24E008250CA /* UserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
+		ACF927382D08076400113C5D /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				ACCC6B6A2AD250080053A350 /* BackButtonModifier.swift */,
-				AC4B58EB2B08D3A60043D8FB /* RootViewModifier.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -296,7 +291,6 @@
 		ACA9850D2AD18AA000F16A7B /* swiftui-social */ = {
 			isa = PBXGroup;
 			children = (
-				ACBE3F872B652EEF00A71539 /* Common */,
 				ACA032D12B1B55C200EDC73C /* Persistence */,
 				ACA032C22B1B520A00EDC73C /* Config */,
 				AC4B58DF2B0899500043D8FB /* Injected */,
@@ -333,7 +327,6 @@
 			children = (
 				ACA032C52B1B527B00EDC73C /* Info.plist */,
 				ACA985122AD18AA200F16A7B /* Assets.xcassets */,
-				ACA985152AD18AA200F16A7B /* Preview Assets.xcassets */,
 				ACA985442AD192D000F16A7B /* Colors.xcassets */,
 			);
 			path = Resource;
@@ -365,21 +358,14 @@
 				ACA985482AD1930F00F16A7B /* Color.swift */,
 				ACA032C02B1B51F800EDC73C /* Env.swift */,
 				AC4B58ED2B08D78F0043D8FB /* Helper.swift */,
+				ACF927382D08076400113C5D /* Loadable.swift */,
+				ACBE3F882B652EFB00A71539 /* Loading.swift */,
 				ACA032CD2B1B555900EDC73C /* NetworkInterceptor.swift */,
 				ACA032CF2B1B557400EDC73C /* NetworkPlugin.swift */,
-				ACA73CDD2B11FD1B00004F3C /* View.swift */,
 				ACE1467B2CF1F978008DABC5 /* Router.swift */,
 				AC0F7C602CFADD620002BC3D /* UINavigationController.swift */,
 			);
 			path = Util;
-			sourceTree = "<group>";
-		};
-		ACBE3F872B652EEF00A71539 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				ACBE3F882B652EFB00A71539 /* Loading.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,7 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA985452AD192D000F16A7B /* Colors.xcassets in Resources */,
-				ACA985162AD18AA200F16A7B /* Preview Assets.xcassets in Resources */,
 				ACA985132AD18AA200F16A7B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +555,7 @@
 				ACA032D32B1B55D500EDC73C /* CoreStorage.swift in Sources */,
 				AC653D2C2B418B600013FCF1 /* Feed.swift in Sources */,
 				ACA032D92B1B568200EDC73C /* AuthInteractor.swift in Sources */,
+				ACF927392D08076400113C5D /* Loadable.swift in Sources */,
 				AC99D7B52B52BE4700347910 /* FeedRepository.swift in Sources */,
 				ACA9853E2AD18EBF00F16A7B /* SignUpView.swift in Sources */,
 				ACE1467C2CF1F978008DABC5 /* Router.swift in Sources */,
@@ -577,10 +563,8 @@
 				AC4B58EE2B08D78F0043D8FB /* Helper.swift in Sources */,
 				ACA9850F2AD18AA000F16A7B /* MainApp.swift in Sources */,
 				AC99D7B32B52BD6600347910 /* FeedInteractor.swift in Sources */,
-				ACA73CDE2B11FD1B00004F3C /* View.swift in Sources */,
 				ACA032CC2B1B551400EDC73C /* BaseRepository.swift in Sources */,
 				ACBE3F8B2B65347D00A71539 /* CreateFeedView.swift in Sources */,
-				AC4B58EC2B08D3A60043D8FB /* RootViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

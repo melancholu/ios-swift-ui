@@ -5,8 +5,8 @@
 //  Created by song dong hyeok on 2023/10/07.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct LoginView: View {
     @Environment(\.injected) private var injected: DIContainer
@@ -14,6 +14,8 @@ struct LoginView: View {
 
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var alertTitle: String = ""
+    @State private var apiResult: ApiResult = .notRequested
 
     var body: some View {
         VStack(spacing: 8) {
@@ -36,22 +38,41 @@ struct LoginView: View {
         }
         .padding(.top, 160)
         .padding([.leading, .trailing], 16)
+        .alert(alertTitle, isPresented: Binding(
+            get: { alertTitle != "" },
+            set: { if !$0 { alertTitle = "" } }
+        )) {
+            Button("ok", role: .cancel) {
+                alertTitle = ""
+            }
+        }
+        .onChange(of: apiResult) {
+            if case .failed(let error) = apiResult {
+                if let stringError = error as? StringError {
+                    alertTitle = stringError.message
+                } else {
+                    alertTitle = error.localizedDescription
+                }
+            } else {
+                alertTitle = ""
+            }
+        }
     }
 }
 
 private extension LoginView {
     func login() {
-        var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
+        guard case email.isEmpty = false else {
+            alertTitle = "Please enter email"
+            return
+        }
 
-        injected.interactors.authInteractor.login(email: email, password: password).sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                break
-            }
-        }, receiveValue: { _ in
-        }).store(in: &subscriptions)
+        guard case password.isEmpty = false else {
+            alertTitle = "Please enter password"
+            return
+        }
+
+        injected.interactors.authInteractor.login(email: email, password: password, result: $apiResult)
     }
 }
 

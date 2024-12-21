@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 class BaseRepository<T: TargetType> {
-
     init(_ environment: Env.Mode = .prod) {
         if environment == .local {
             let customEndpointClosure = { (target: T) -> Endpoint in return Endpoint(url: URL(target: target).absoluteString,

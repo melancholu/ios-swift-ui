@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CoreStorage {
+final class CoreStorage: ObservableObject {
 
     static let shared = CoreStorage()
     private let userDefaults = UserDefaults.standard
@@ -16,20 +16,14 @@ final class CoreStorage {
         case refreshToken = "REFRESH_TOKEN"
         case user = "USER"
     }
-    private(set) var accessToken: String? {
-        get {
-            return userDefaults.string(forKey: Key.accessToken.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Key.accessToken.rawValue)
+    @Published private(set) var accessToken: String? {
+        didSet {
+            userDefaults.set(accessToken, forKey: Key.accessToken.rawValue)
         }
     }
     private(set) var refreshToken: String? {
-        get {
-            return userDefaults.string(forKey: Key.refreshToken.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Key.refreshToken.rawValue)
+        didSet {
+            userDefaults.set(refreshToken, forKey: Key.refreshToken.rawValue)
         }
     }
     private(set) var user: User? {
@@ -52,6 +46,11 @@ final class CoreStorage {
                 userDefaults.removeObject(forKey: Key.user.rawValue)
             }
         }
+    }
+
+    init() {
+        self.accessToken = userDefaults.string(forKey: Key.accessToken.rawValue)
+        self.refreshToken = userDefaults.string(forKey: Key.refreshToken.rawValue)
     }
 
     func setToken(_ token: Token?) {

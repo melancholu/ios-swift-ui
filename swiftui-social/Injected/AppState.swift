@@ -5,15 +5,24 @@
 //  Created by song dong hyeok on 2023/11/18.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
-class AppState: ObservableObject, Equatable {
+final class AppState: ObservableObject, Equatable {
     static var shared = AppState()
 
+    private var cancellable: AnyCancellable?
+
     @Published var feedData = FeedData()
-//    var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
-    var isLoggedIn: Bool = true
+    @Published var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
+
+    init() {
+        cancellable = CoreStorage.shared.$accessToken
+            .map { $0 != nil }
+            .sink { [weak self] in
+                self?.isLoggedIn = $0
+            }
+    }
 
     static func == (lhs: AppState, rhs: AppState) -> Bool {
         return lhs.feedData == rhs.feedData

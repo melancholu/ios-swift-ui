@@ -5,9 +5,9 @@
 //  Created by song dong hyeok on 2024/01/13.
 //
 
+import Combine
 import Foundation
 import Moya
-import Combine
 
 protocol FeedRepositoryProtocol {
     func getFeeds(_ page: Int) -> AnyPublisher<Pagination<[Feed]>, Error>
