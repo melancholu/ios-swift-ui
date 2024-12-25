@@ -12,14 +12,22 @@ struct FeedListView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.injected) private var injected: DIContainer
     @EnvironmentObject var router: Router
+    @ObservedObject var feedData: AppState.FeedData
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             List(appState.feedData.feeds) { feed in
               FamilyRow(feed: feed)
                 .onAppear {
-                    loadMore()
+                    if feed == appState.feedData.feeds.last {
+                        loadMore()
+                    }
                 }
+            }
+            if appState.feedData.isLoading == .loading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             Button {
                 router.push(to: .createFeed)
@@ -32,11 +40,18 @@ struct FeedListView: View {
             }
             .padding(16)
         }
+        .onAppear {
+            if appState.feedData.feeds.isEmpty {
+                loadMore()
+            }
+        }
     }
 }
 
 private extension FeedListView {
     func loadMore() {
-        injected.interactors.feedInteractor.getFeeds()
+        DispatchQueue.main.async {
+            injected.interactors.feedInteractor.getFeeds()
+        }
     }
 }

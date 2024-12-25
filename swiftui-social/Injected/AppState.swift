@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-final class AppState: ObservableObject, Equatable {
+final class AppState: ObservableObject {
     static var shared = AppState()
 
     private var cancellable: AnyCancellable?
@@ -19,24 +19,17 @@ final class AppState: ObservableObject, Equatable {
     init() {
         cancellable = CoreStorage.shared.$accessToken
             .map { $0 != nil }
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.isLoggedIn = $0
             }
     }
-
-    static func == (lhs: AppState, rhs: AppState) -> Bool {
-        return lhs.feedData == rhs.feedData
-    }
 }
 
 extension AppState {
-    class FeedData: ObservableObject, Equatable {
-        @Published var feeds: [Feed] = [Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub, Feed.stub]
-        @Published var nextPage: Int = 0
-        @State var isLoading: Loading = .idle
-
-        static func == (lhs: FeedData, rhs: FeedData) -> Bool {
-            return lhs.feeds == rhs.feeds && lhs.nextPage == rhs.nextPage
-        }
+    class FeedData: ObservableObject {
+        @Published var feeds: [Feed] = []
+        @Published var nextPage: Int = 1
+        @Published var isLoading: Loading = .idle
     }
 }

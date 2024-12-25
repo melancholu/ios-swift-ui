@@ -12,8 +12,6 @@ struct MainApp: App {
     @StateObject private var mainRouter = Router()
     @StateObject private var authRouter = Router()
     @StateObject private var appEnvironment: AppEnvironment = AppEnvironment.bootstrap()
-
-    @State private var isLoggedIn = false
     @StateObject private var appState: AppState = AppState.shared
 
     var body: some Scene {
@@ -27,13 +25,11 @@ struct MainApp: App {
                                 case .createFeed:
                                     CreateFeedView()
                                 case .feedList:
-                                    FeedListView()
+                                    FeedListView(feedData: appEnvironment.appState.feedData)
                                 }
                             }
                     }
                     .environmentObject(mainRouter)
-                    .environment(\.injected, appEnvironment.container)
-                    .environmentObject(appEnvironment.appState)
                 } else {
                     NavigationStack(path: $authRouter.path) {
                         LoginView()
@@ -45,11 +41,10 @@ struct MainApp: App {
                             }
                     }
                     .environmentObject(authRouter)
-                    .environment(\.injected, appEnvironment.container)
-                    .environmentObject(appEnvironment.appState)
                 }
             }
-            .environmentObject(appEnvironment)
+            .environmentObject(appEnvironment.appState)
+            .environment(\.injected, appEnvironment.container)
             .animation(.easeInOut, value: appEnvironment.appState.isLoggedIn)
         }
     }

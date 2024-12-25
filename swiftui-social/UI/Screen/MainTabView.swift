@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var appState: AppState
+
     var body: some View {
         TabView {
-            FeedListView()
+            FeedListView(feedData: appState.feedData)
                 .tabItem {
                     Label("FeedList", image: "icFeed")
                 }
-            FeedListView()
+            FeedListView(feedData: appState.feedData)
                 .tabItem {
                     Label("FeedList", image: "icFeed")
                 }

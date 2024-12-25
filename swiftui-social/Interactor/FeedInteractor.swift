@@ -24,10 +24,10 @@ final class DefaultFeedInteractor: FeedInteractor {
     }
 
     func getFeeds() {
+        guard appState.feedData.nextPage != -1 else { return }
         guard appState.feedData.isLoading != .loading else { return }
 
-        var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
-
+        appState.feedData.isLoading = .loading
         feedRepository.getFeeds(appState.feedData.nextPage)
             .sink(receiveCompletion: { completion in
                 switch completion {
