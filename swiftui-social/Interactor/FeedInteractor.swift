@@ -7,9 +7,11 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 protocol FeedInteractor {
     func getFeeds()
+    func createFeeds(content: String, result: Binding<ApiResult>)
 }
 
 final class DefaultFeedInteractor: FeedInteractor {
@@ -44,8 +46,23 @@ final class DefaultFeedInteractor: FeedInteractor {
                 self.appState.feedData.nextPage = data.count == 0 ? -1 : meta.nextPage
             }).store(in: &subscriptions)
     }
+
+    func createFeeds(content: String, result: Binding<ApiResult>) {
+        let feed = Feed(content: content)
+
+        feedRepository.createFeed(feed).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                result.wrappedValue = .success
+            case .failure(let error):
+                result.wrappedValue = .failed(error)
+            }
+        }, receiveValue: { _ in
+        }).store(in: &subscriptions)
+    }
 }
 
 final class StubFeedInteractor: FeedInteractor {
     func getFeeds() {}
+    func createFeeds(content: String, result: Binding<ApiResult>) {}
 }
