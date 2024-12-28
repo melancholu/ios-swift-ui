@@ -5,6 +5,8 @@
 //  Created by song dong hyeok on 2023/12/31.
 //
 
+import Foundation
+
 struct Feed: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case uuid
@@ -52,4 +54,60 @@ extension Feed {
 
 extension Feed: Identifiable {
     var id: String { uuid ?? String(Int.random(in: 1..<10000)) }
+}
+
+extension Feed {
+    func readableDate() -> String {
+        let inputFormatter = ISO8601DateFormatter()
+        inputFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+        if let dateString = created, let date = inputFormatter.date(from: dateString) {
+            let now = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: now)
+
+            if let seconds = components.second,
+               components.year == 0,
+               components.month == 0,
+               components.day == 0,
+               components.hour == 0,
+               components.minute == 0,
+               seconds < 60 {
+                return "just now"
+            }
+
+            if let minutes = components.minute,
+               components.year == 0,
+               components.month == 0,
+               components.day == 0,
+               components.hour == 0,
+               minutes < 60 {
+                return "\(minutes)m ago"
+            }
+
+            if let hours = components.hour,
+               components.year == 0,
+               components.month == 0,
+               components.day == 0,
+               hours < 24 {
+                return "\(hours)h ago"
+            }
+
+            if calendar.isDateInYesterday(date) {
+                return "yesterday"
+            }
+
+            if calendar.isDate(date, equalTo: now, toGranularity: .year) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MMM d"
+                return formatter.string(from: date)
+            }
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, yyyy"
+            return formatter.string(from: date)
+        }
+
+        return "-"
+    }
 }
