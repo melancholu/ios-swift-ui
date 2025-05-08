@@ -5,52 +5,74 @@
 //  Created by song dong hyeok on 2023/10/07.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct LoginView: View {
     @Environment(\.injected) private var injected: DIContainer
+    @EnvironmentObject var router: Router
 
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var alertTitle: String = ""
+    @State private var apiResult: ApiResult = .notRequested
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 8) {
-                TextField("Email", text: $email)
-                    .frame(height: 36)
-                    .textFieldStyle(.roundedBorder)
-                SecureField("Password", text: $password)
-                    .frame(height: 36)
-                    .textFieldStyle(.roundedBorder)
-                HStack {
-                    NavigationLink("SignUp", destination: SignUpView())
-                    Spacer()
-                    Button("Log in") {
-                        login()
-                    }
-                }.padding([.leading, .trailing], 8)
+        VStack(spacing: 8) {
+            TextField("Email", text: $email)
+                .frame(height: 36)
+                .textFieldStyle(.roundedBorder)
+            SecureField("Password", text: $password)
+                .frame(height: 36)
+                .textFieldStyle(.roundedBorder)
+            HStack {
+                Button("SignUp") {
+                    router.push(to: .signUp)
+                }
                 Spacer()
+                Button("Log in") {
+                    login()
+                }
+            }.padding([.leading, .trailing], 8)
+            Spacer()
+        }
+        .padding(.top, 160)
+        .padding([.leading, .trailing], 16)
+        .alert(alertTitle, isPresented: Binding(
+            get: { alertTitle != "" },
+            set: { if !$0 { alertTitle = "" } }
+        )) {
+            Button("ok", role: .cancel) {
+                alertTitle = ""
             }
-            .padding(.top, 160)
-            .padding([.leading, .trailing], 16)
+        }
+        .onChange(of: apiResult) {
+            if case .failed(let error) = apiResult {
+                if let stringError = error as? StringError {
+                    alertTitle = stringError.message
+                } else {
+                    alertTitle = error.localizedDescription
+                }
+            } else {
+                alertTitle = ""
+            }
         }
     }
 }
 
 private extension LoginView {
     func login() {
-        var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
+        guard case email.isEmpty = false else {
+            alertTitle = "Please enter email"
+            return
+        }
 
-        injected.interactors.authInteractor.login(email: email, password: password).sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                break
-            }
-        }, receiveValue: { _ in
-        }).store(in: &subscriptions)
+        guard case password.isEmpty = false else {
+            alertTitle = "Please enter password"
+            return
+        }
+
+        injected.interactors.authInteractor.login(email: email, password: password, result: $apiResult)
     }
 }
 

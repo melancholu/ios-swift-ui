@@ -5,21 +5,24 @@
 //  Created by song dong hyeok on 2023/12/16.
 //
 
-import Foundation
 import Combine
+import Foundation
+import SwiftUI
 
 protocol UserInteractor {
     func getMe() -> AnyPublisher<User, Error>
     func getUser(_ uuid: String) -> AnyPublisher<User, Error>
     func getUsers(_ page: Int) -> AnyPublisher<Pagination<[User]>, Error>
-    func signUp(user: User) -> AnyPublisher<User, Error>
+    func signUp(name: String, email: String, password: String, result: Binding<ApiResult>)
 }
 
-struct DefaultUserInteractor: UserInteractor {
-    private let userRepository: UserRepository
+final class DefaultUserInteractor: UserInteractor {
+    private let userRepository: UserRepositoryProtocol
+    private var subscriptions: Set<AnyCancellable>
 
-    init(userRepository: UserRepository) {
+    init(userRepository: UserRepositoryProtocol) {
         self.userRepository = userRepository
+        self.subscriptions = Set<AnyCancellable>()
     }
 
     func getMe() -> AnyPublisher<User, Error> {
@@ -34,25 +37,33 @@ struct DefaultUserInteractor: UserInteractor {
         return userRepository.getUsers(page)
     }
 
-    func signUp(user: User) -> AnyPublisher<User, Error> {
-        return userRepository.signUp(user: user)
+    func signUp(name: String, email: String, password: String, result: Binding<ApiResult>) {
+        let user = User(name: name, email: email, password: password)
+
+        userRepository.signUp(user: user).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                result.wrappedValue = .success
+            case .failure(let error):
+                result.wrappedValue = .failed(error)
+            }
+        }, receiveValue: { _ in
+        }).store(in: &subscriptions)
     }
 }
 
-struct StubUserInteractor: UserInteractor {
+final class StubUserInteractor: UserInteractor {
     func getMe() -> AnyPublisher<User, Error> {
-        Just(User.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(User.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 
     func getUser(_ uuid: String) -> AnyPublisher<User, Error> {
-        Just(User.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(User.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 
     func getUsers(_ page: Int) -> AnyPublisher<Pagination<[User]>, Error> {
-        Just(Pagination.usersStub).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(Pagination.usersStub).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 
-    func signUp(user: User) -> AnyPublisher<User, Error> {
-        Just(User.stub).setFailureType(to: Error.self).eraseToAnyPublisher()
-    }
+    func signUp(name: String, email: String, password: String, result: Binding<ApiResult>) {}
 }

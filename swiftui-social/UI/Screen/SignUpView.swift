@@ -10,11 +10,13 @@ import Combine
 
 struct SignUpView: View {
     @Environment(\.injected) private var injected: DIContainer
-    @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var router: Router
 
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var name: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var alertTitle: String = ""
+    @State private var apiResult: ApiResult = .notRequested
 
     var body: some View {
         VStack(spacing: 8) {
@@ -35,38 +37,47 @@ struct SignUpView: View {
         }.padding(.top, 160)
         .padding([.leading, .trailing], 16)
         .modifier(BackButtonModifier())
+        .alert(alertTitle, isPresented: Binding(
+            get: { alertTitle != "" },
+            set: { if !$0 { alertTitle = "" } }
+        )) {
+            Button("ok", role: .cancel) {
+                alertTitle = ""
+            }
+        }
+        .onChange(of: apiResult) {
+            if case .failed(let error) = apiResult {
+                if let stringError = error as? StringError {
+                    alertTitle = stringError.message
+                } else {
+                    alertTitle = error.localizedDescription
+                }
+            } else if case .success = apiResult {
+                self.router.pop()
+            } else {
+                alertTitle = ""
+            }
+        }
         Spacer()
     }
 }
 
 private extension SignUpView {
-
     func signUp() {
         guard case name.isEmpty = false else {
-            //            showToast(message: "Enter name")
+            alertTitle = "Please enter name"
             return
         }
         guard case email.isEmpty = false else {
-            //            showToast(message: "Enter email")
+            alertTitle = "Please enter email"
             return
         }
         guard case password.isEmpty = false else {
-            //            showToast(message: "Enter password")
+            alertTitle = "Please enter password"
             return
         }
 
-        let user = User(name: name, email: email, password: password)
-        var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
-
-        injected.interactors.userInteractor.signUp(user: user).sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                self.presentation.wrappedValue.dismiss()
-            case .failure(let error):
-                break
-            }
-        }, receiveValue: { _ in
-        }).store(in: &subscriptions)
+        injected.interactors.userInteractor.signUp(name: name, email: email, password: password, result: $apiResult)
     }
 }
 

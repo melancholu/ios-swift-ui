@@ -27,6 +27,10 @@ struct PaginationMeta: Codable {
     let pageNum: Int
 }
 
+extension Pagination<[Feed]> {
+    static let feedsStub: Self = Pagination<[Feed]>(data: [Feed.stub], meta: PaginationMeta.stub)
+}
+
 extension Pagination<[User]> {
     static let usersStub: Self = Pagination<[User]>(data: [User.stub], meta: PaginationMeta.stub)
 }

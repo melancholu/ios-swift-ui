@@ -5,9 +5,9 @@
 //  Created by song dong hyeok on 2023/12/02.
 //
 
-import Foundation
 import Combine
 import CombineMoya
+import Foundation
 
 protocol AuthRepositoryProtocol {
     func login(user: User) -> AnyPublisher<Token, Error>
@@ -32,8 +32,7 @@ final class AuthRepository: BaseRepository<AuthAPI>, AuthRepositoryProtocol {
 
     func logout() -> AnyPublisher<Void, Error> {
         return provider.requestPublisher(.logout).tryMap { _ in
-            self.coreStorage.setToken(nil)
-            self.coreStorage.setUser(nil)
+            return
         }
         .mapError { error in
             return error

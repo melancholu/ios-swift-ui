@@ -5,26 +5,16 @@
 //  Created by song dong hyeok on 2023/11/18.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct DIContainer: EnvironmentKey {
 
-    let appState: Store<AppState>
     let interactors: Interactors
-
-    init(appState: Store<AppState>, interactors: Interactors) {
-        self.appState = appState
-        self.interactors = interactors
-    }
-
-    init(appState: AppState, interactors: Interactors) {
-        self.init(appState: Store<AppState>(appState), interactors: interactors)
-    }
 
     static var defaultValue: Self { Self.default }
 
-    private static let `default` = Self(appState: AppState(), interactors: .stub)
+    private static let `default` = Self(interactors: .stub)
 }
 
 extension EnvironmentValues {
@@ -33,11 +23,3 @@ extension EnvironmentValues {
         set { self[DIContainer.self] = newValue }
     }
 }
-
-#if DEBUG
-extension DIContainer {
-    static var preview: Self {
-        .init(appState: .init(AppState.preview), interactors: .stub)
-    }
-}
-#endif

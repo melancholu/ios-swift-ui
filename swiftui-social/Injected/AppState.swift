@@ -5,26 +5,31 @@
 //  Created by song dong hyeok on 2023/11/18.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
-struct AppState {
-    var system = System()
-    var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
-}
+final class AppState: ObservableObject {
+    static var shared = AppState()
 
-extension AppState {
-    struct System: Equatable {
-        var isActive: Bool = false
+    private var cancellable: AnyCancellable?
+
+    @Published var feedData = FeedData()
+    @Published var isLoggedIn: Bool = CoreStorage.shared.accessToken != nil
+
+    init() {
+        cancellable = CoreStorage.shared.$accessToken
+            .map { $0 != nil }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.isLoggedIn = $0
+            }
     }
 }
 
-#if DEBUG
 extension AppState {
-    static var preview: AppState {
-        var state = AppState()
-        state.system.isActive = true
-        return state
+    class FeedData: ObservableObject {
+        @Published var feeds: [Feed] = []
+        @Published var nextPage: Int = 1
+        @Published var isLoading: Loading = .idle
     }
 }
-#endif
